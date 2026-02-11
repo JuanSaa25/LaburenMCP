@@ -17,14 +17,14 @@ app.get('/products', async (c) => {
   try {
     let results;
     if (query) {
-      // Agregamos filtros para las nuevas columnas del Excel
+      // Agregamos filtros
       results = await c.env.DB.prepare(
         "SELECT * FROM products WHERE name LIKE ?1 OR description LIKE ?1 OR color LIKE ?1 OR size LIKE ?1 OR category LIKE ?1"
       )
       .bind(`%${query}%`)
       .all();
     } else {
-      results = await c.env.DB.prepare("SELECT * FROM products LIMIT 10").all();
+      results = await c.env.DB.prepare("SELECT * FROM products LIMIT 100").all();
     }
     return c.json(results.results);
   } catch (e) {

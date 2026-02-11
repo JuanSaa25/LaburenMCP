@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS cart_items;
+DROP TABLE IF EXISTS carts;
+DROP TABLE IF EXISTS products;
+
 CREATE TABLE products (
     id INTEGER PRIMARY KEY,
     name TEXT,         
